@@ -1,3 +1,3 @@
-const myAlert = "hello world1111";
-const myConsole = "hello world2222222";
+const myAlert = "caught1111";
+const myConsole = "mymistake2222222";
 export {myAlert, myConsole};
