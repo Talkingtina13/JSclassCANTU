@@ -1,24 +1,25 @@
-let fristName = "Christina"
-let lastName = "Cantu"
-let fullName = fristName + " " + lastName
-let isOnline = true
-let age = 23
-let names = ["Chris", "Cantu", "Tina"];
+let myFirstName = "Christina"
+let myLastName =  "Cantu"
+let myAge = "23"
+let newVar = 'SOMETHING'
+const myConst = 13
+console.log(myAge == myFirstName)
+console.log(myAge === myFirstName)
+
+let myVar = null
+console.log(`myVar is typeof ${typeof myVar}`)
+
+console.log(`myFirstName is typeof ${typeof myFirstName}`)
+console.log(`myFirstName is value ${myFirstName}`)
+console.log(`myAge is typeof ${typeof myAge}`)
+console.log(`myLastName is typeof ${typeof myLastName}`)
 
 
-
-
-
-console.log(fullName)
-
-console.log(`fristName is typeof ${typeof fristName}`)
-console.log(`names is typeof ${typeof names}`)
-console.log(`fristName is value ${fristName}`)
 
 
 // dont use var
 //if (true) {
-   // const myConst = 23
+   // const myConst = 13
    // console.log(myConst)
 
 //}else{
