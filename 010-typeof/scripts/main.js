@@ -14,9 +14,6 @@ console.log(`myFirstName is value ${myFirstName}`)
 console.log(`myAge is typeof ${typeof myAge}`)
 console.log(`myLastName is typeof ${typeof myLastName}`)
 
-
-
-
 // dont use var
 //if (true) {
    // const myConst = 13
