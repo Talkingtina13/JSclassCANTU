@@ -4,7 +4,7 @@ let myAge = "23"
 let newVar = 'SOMETHING'
 const myConst = 13
 console.log(myAge == myFirstName)
-console.log(myAge === myFirstName)
+console.log(myAge === myLastName)
 
 let myVar = null
 console.log(`myVar is typeof ${typeof myVar}`)
