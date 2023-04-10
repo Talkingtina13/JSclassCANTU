@@ -1,18 +1,11 @@
 // Practicing Functions 
 
-function doMath (a, b) {
-   console.log(`this is the result ${a - b}`)
-   console.log(`this is the result ${a + b}`)
-   console.log(`this is the result ${a / b}`)
-   console.log(`this is the result ${a * b}`)
-   let result = a * b
-   return result
-   // console.log(`this is the result ${a - b}`)
-   // console.log(`this is the result ${a + b}`)
-   // console.log(`this is the result ${a / b}`)
-   // console.log(`this is the result ${a * b}`)
+const grades = [85, 77, 82, 95, 68];
+
+function getAvg(grades) {
+  const total = grades.reduce((acc, c) => acc + c, 0);
+  return total / grades.length;
 }
 
-doMath(10, 4)
-const result = doMath(10, 4)
-console.log(`this result was returned from the function  ${result}`)
+const average = getAvg(grades);
+console.log(average);
