@@ -1,25 +1,16 @@
 // Practicing Functions 
 
-function doMath (a,b) {
-  let result = a+b
-  return result
-   // console.log(`this is the result ${a - b}`)
-   // console.log(`this is the result ${a + b}`)
-   // console.log(`this is the result ${a / b}`)
-   // console.log(`this is the result ${a * b}`)
+function sum(a, b) {
+  return a + b
 }
 
+let sum2 =(a, b) => a + b
 
-doMoreMath = (a,b) => a * b 
-divide = (a,b) => a / b
-max = (a,b) => a - b
-  
+let isPositive =(number) =>
+  number >= 0
 
-console.log(doMoreMath(75 ,30))
+let randomNumber = () => Math.random
 
-console.log(divide(650,65))
-
-console.log(subtract(15,8))
-
-const result = doMath(10, 4)
-console.log(`this result was returned from the function  ${result}`)
+console.log(sum2(75,30))
+console.log(isPositive(-3,10))
+console.log(randomNumber())
