@@ -1,5 +1,7 @@
 // update the dom
 
+const myArr = []
+
  const updateDom = (input) => {
   const divEl = document.querySelector(`#output`)
   const p = document.createElement('p')
@@ -9,8 +11,12 @@
 }
 
 
-const milage = (miles, gallons, price = 3.79) => 
-miles/gallons * price
+const milage = (miles, gallons, price = 3.79) => {
+  const MPG = miles/gallons 
+  const tripCost = MPG * price
+  myArr.push[MPG, tripCost]
+}
+ 
 
 
 
