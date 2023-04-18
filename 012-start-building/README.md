@@ -1,3 +1,5 @@
 # Week 7
 
-## Yes I'm using dev tools and they help me grasp what im doing 
+## Yes I'm using dev tools 
+
+## I dont completley understand but I will wath some more videos 
