@@ -1,43 +1,38 @@
-// practice prob
+// refactor&feedback
 
-const myMPG = []
-const myTripCost = []
+const MY_MPG = []
+const MY_TRIP_COST = []
 
- const updateDom = (input) => {
-  const divEl = document.querySelector(`#output`)
-  const p = document.createElement('p')
-  p.textContent = input
-  divEl.appendChild(p)
-
+const updateDOM = (input) => {
+    const divEl = document.querySelector('#output')
+    const p = document.createElement('p')
+    p.textContent = input
+    divEl.appendChild(p)
 }
-
 
 const trackMPGandCost = (miles, gallons, price = 3.79) => {
-  const MPG = Math.round (miles / gallons * price)
-  const tripCost = Math.round (gallons * price)
-  updateDom(`Milage per gallon ${MPG} cost ${tripCost}`)
-  myMPG.push(MPG)
-  myTripCost.push(tripCost)
-};
-
-const calculateMPGAvg = () => {
- let totalMPG = 0
-  for (let i = 0; i < myMPG.length; i++){
-     totalMPG = totalMPG + myMPG[i]
-  }
-  
-  let avgMPG = Math.round(totalMPG/myMPG.length)
-  updateDom(`avg mps is ${avgMPG}`)
+    const MPG  = Math.round(miles/gallons)
+    const tripCost = Math.round(gallons * price)
+    updateDOM(`Miles per gallon  is ${MPG} and trip cost is ${tripCost}`)
+    MY_MPG.push(MPG)
+    MY_TRIP_COST.push(tripCost)
 }
 
-const calculateAvgCoast = () => {
-  let totalCoast = 0
-  for (let i=0; i < myTripCost.length;i++){
-      totalCoast = totalCoast + myTripCost[i]
-  }
-  let avgCoast = Math.round(totalCoast/myTripCost.length)
-  updateDom(`avvg cost is ${avgCoast}`)
+const calculateSUM = (arr) => {
+    let sum = 0
+    for(let i=0; i < arr.length; i++) {
+        sum = sum + arr[i]
+    }
+    return sum
+}
 
+const calculateAvg = () => {
+    let sumMPG = calculateSUM(MY_MPG)
+    let sumTripCost = calculateSUM(MY_TRIP_COST)
+    let avgMPG = Math.round(sumMPG/MY_MPG.length)
+    let avgTripCost = Math.round(sumTripCost/MY_TRIP_COST.length)
+    updateDOM(`Average MPG is ${avgMPG}`)
+    updateDOM(`Average Trip is ${avgTripCost}`)
 }
 
 trackMPGandCost(200, 15, 3)
@@ -46,7 +41,4 @@ trackMPGandCost(420, 20, 4.5)
 trackMPGandCost(530, 17, 2.83)
 trackMPGandCost(121, 21, 5)
 trackMPGandCost(390, 33, 7)
-
-//updateDom(myArr)
-
-calculateMPGAvg()
+calculateAvg()
