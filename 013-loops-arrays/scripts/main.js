@@ -1,4 +1,4 @@
-// update the dom
+// practice prob
 
 const myMPG = []
 const myTripCost = []
@@ -12,7 +12,7 @@ const myTripCost = []
 }
 
 
-const trackMPGCost = (miles, gallons, price = 3.79) => {
+const trackMPGandCost = (miles, gallons, price = 3.79) => {
   const MPG = Math.round (miles / gallons * price)
   const tripCost = Math.round (gallons * price)
   updateDom(`Milage per gallon ${MPG} cost ${tripCost}`)
@@ -21,24 +21,31 @@ const trackMPGCost = (miles, gallons, price = 3.79) => {
 };
 
 const calculateMPGAvg = () => {
-  //const avgMPG = (myArr[0]+ myArr[2]) / 2
- // updateDom(` Average miles per gallon is ${avgMPG} `)
  let totalMPG = 0
   for (let i = 0; i < myMPG.length; i++){
      totalMPG = totalMPG + myMPG[i]
   }
   
-  let avgMPG = totalMPG/myMPG.length
-
+  let avgMPG = Math.round(totalMPG/myMPG.length)
   updateDom(`avg mps is ${avgMPG}`)
 }
 
-trackMPGCost(250, 10, 4.10)
-trackMPGCost(400, 12, 5)
-trackMPGCost(200, 12, 4)
-trackMPGCost(150, 15, 4)
-trackMPGCost(270, 4, 3)
-trackMPGCost(180, 4, 6)
+const calculateAvgCoast = () => {
+  let totalCoast = 0
+  for (let i=0; i < myTripCost.length;i++){
+      totalCoast = totalCoast + myTripCost[i]
+  }
+  let avgCoast = Math.round(totalCoast/myTripCost.length)
+  updateDom(`avvg cost is ${avgCoast}`)
+
+}
+
+trackMPGandCost(200, 15, 3)
+trackMPGandCost(180, 20, 6)
+trackMPGandCost(420, 20, 4.5)
+trackMPGandCost(530, 17, 2.83)
+trackMPGandCost(121, 21, 5)
+trackMPGandCost(390, 33, 7)
 
 //updateDom(myArr)
 
