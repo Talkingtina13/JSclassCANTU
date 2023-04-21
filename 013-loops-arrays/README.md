@@ -1,0 +1,1 @@
+** I feel as though I was able to understand it the ,ore i practiced with it but I still am gonna try a bit more on my own **
