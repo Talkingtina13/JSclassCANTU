@@ -38,12 +38,10 @@ const calculateAvg = () => {
     updateDOM(`Average MPG is ${avgMPG}`)
     updateDOM(`Average Trip is ${avgTripCost}`)
 }
-
-
-trackMPGandCost(360, 15, 5.40)
-trackMPGandCost(320, 12, 5)
-trackMPGandCost(100, 7, 4.40)
-trackMPGandCost(600, 24, 5.70)
-trackMPGandCost(50, 2, 3.40)
-trackMPGandCost(320, 12, 5)
+trackMPGandCost(200, 15, 3)
+trackMPGandCost(180, 20, 6)
+trackMPGandCost(420, 20, 4.5)
+trackMPGandCost(530, 17, 2.83)
+trackMPGandCost(121, 21, 5)
+trackMPGandCost(390, 33, 7)
 calculateAvg()
