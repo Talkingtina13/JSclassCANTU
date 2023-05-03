@@ -1,9 +1,11 @@
+const FORM = document.getElementById('form-input')
+
 const MY_MPG=[]
 const MY_TRIP_COST= []
 
 
 const updateDom = (input) => {
-    const divEl = document.querySelector(`#output`)
+    const divEl = document.querySelector('#output')
     const p = document.createElement('p')
     p.textContent = input
     divEl.appendChild(p)
@@ -17,48 +19,15 @@ const trackMPGandCost = (miles, gallons, price = 3.79) => {
    MY_MPG.push(MPG)
     MY_TRIP_COST.push(tripCost)
   }
-
-  const calculateMPGAvg = () => {
-   let totalMPG = 0
-    for (let i = 0; i < MY_MPG.length; i++){
-       totalMPG = totalMPG + MY_MPG[i]
-    }
-    let avgMPG = Math.round(totalMPG/MY_MPG.length)
-    updateDom(`avg mps is ${avgMPG}`)
-  }
-  //////////////////////////////////////////////////////////
-
- // const calculateAvgCost = () => {
-   // let totalCost = 0
-  //  for (let i=0; i < MY_TRIP_COST.length;i++){
-  //      totalCost = totalCost + MY_TRIP_COST[i]
-  //  }
-  //  let avgCost = Math.round(totalCost/MY_TRIP_COST.length)
-  //  updateDom(`avvg cost is ${avgCost}`)
-
-  //}
+ 
 
   const calculateSUM = (arr) => {
     let sum=0
-    //for(let i=0; i < arr.length;i++){
-   // sum = sum + arr[i]
-   // }
-  // arr.forEach(element => {
-  // sum += element
- //  })
-
     for(value of arr){
         sum += value
     }
-
-
     return sum
   }
-
-
-
-
-
 
 
   const calculateAvg = ()=>{
@@ -71,15 +40,15 @@ const trackMPGandCost = (miles, gallons, price = 3.79) => {
   }
 
 
-  // calculateAvgCost
-  // git flow my code for avreagecoast
-  trackMPGandCost(300, 10, 5.4)
-  trackMPGandCost(400, 6, 5)
-  trackMPGandCost(200, 5, 4)
-  trackMPGandCost(150, 9, 4)
-  trackMPGandCost(270, 4, 3)
-  trackMPGandCost(180, 4, 6)
-  
+  FORM.addEventListener('submit', (e) => {
+    console.log(e)
+})
 
-  calculateMPGAvg()
-  calculateAvg()
+ //trackMPGandCost(300, 10, 5.4)
+  //trackMPGandCost(400, 6, 5)
+  //trackMPGandCost(200, 5, 4)
+ // trackMPGandCost(150, 9, 4)
+ // trackMPGandCost(270, 4, 3)
+  //trackMPGandCost(180, 4, 6)
+
+ // calculateAvg()
