@@ -42,9 +42,9 @@ const trackMPGandCost = (miles, gallons, price = 3.79) => {
 
   FORM.addEventListener('submit', (e) => {
     e.preventDefault()
-  const miles = parseInt(e.target.miles.value)
-  const gallons = parseInt(e.target.gallons.value)
-  const price = parseInt(e.target.price.value)
+  const miles = (e.target.miles.value)
+  const gallons =(e.target.gallons.value)
+  const price = (e.target.price.value)
   trackMPGandCost(miles, gallons, price)
 })
 
