@@ -1,12 +1,13 @@
 const FORM = document.getElementById('form-input')
 const ERR =document.getElementById('err')
+const AVG_OUTPUT = document.getElementById('output-avg')
 
 const MY_MPG=[]
 const MY_TRIP_COST= []
 
 
-const updateDom = (input) => {
-    const divEl = document.querySelector('#output')
+const updateDOM = (input, id) => {
+  const divEl = document.querySelector(id)
     const p = document.createElement('p')
     p.textContent = input
     divEl.appendChild(p)
@@ -16,18 +17,9 @@ const updateDom = (input) => {
 const trackMPGandCost = (miles, gallons, price = 3.79) => {
    const MPG = Math.round (miles / gallons * price)
     const tripCoast = Math.round (gallons * price)
-    updateDom(`Milage per gallon ${MPG} cost ${tripCoast}`)
+    updateDOM(`Miles per gallon is ${MPG} and trip cost is ${tripCost}`, '#output')
    MY_MPG.push(MPG)
     MY_TRIP_COST.push(tripCoast)
-  }
-
-  const calculateMPGAvg = () => {
-   let totalMPG = 0
-    for (let i = 0; i < MY_MPG.length; i++){
-       totalMPG = totalMPG + MY_MPG[i]
-    }
-    let avgMPG = Math.round(totalMPG/MY_MPG.length)
-    updateDom(`avg mps is ${avgMPG}`)
   }
 
   const calculateSUM = (arr) => {
@@ -41,10 +33,10 @@ const trackMPGandCost = (miles, gallons, price = 3.79) => {
   const calculateAvg = ()=>{
     let sumMPG= calculateSUM(MY_MPG)
     let sumTripCoast=calculateSUM(MY_TRIP_COST)
-    let avgMPG=sumMPG/MY_MPG.length
-    let avgTripCost=sumTripCoast/MY_TRIP_COST.length
-    updateDom (`avergae MPG is ${avgMPG}`)
-    updateDom (`avergae TRIP is ${avgTripCost}`)
+    let avgMPG=Math.round(sumMPG/MY_MPG.length)
+    let avgTripCost=Math.round(sumTripCost/MY_TRIP_COST.length)
+    updateDOM(`Average MPG is ${avgMPG}`, '#output-avg')
+    updateDOM(`Average trip cost is ${avgTripCost}`, '#output-avg')
   }
 
 FORM.addEventListener('submit',(e)=>{
@@ -63,9 +55,11 @@ FORM.addEventListener('submit',(e)=>{
  ERR.textContent = errMsg
 } 
 else {
-    ERR.textContent = ""
-    trackMPGandCost(miles, gallons, price)
-    calculateAvg(miles, gallons, price)
-  }
+  ERR.textContent = ''
+  AVG_OUTPUT.textContent = ''
+  trackMPGandCost(miles, gallons, price)
+  calculateAvg()
+    }
+    FORM.reset()
 
 } )
