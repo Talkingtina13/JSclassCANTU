@@ -11,10 +11,10 @@ const myObj ={
     hobbies: ['art', 'kickboxing'],
     mobile: {
         make: 'iPhone 13',
-        OS: 'IOS 16'
-    }
+        OS: 'ios 16'
+    },
     myGreeting: function(person) {
-        return `What is UP ${person}`
+        return `${this.name} who loves to ${this.hobbies[0]} says What is UP ${person}`
     },
 }
 
