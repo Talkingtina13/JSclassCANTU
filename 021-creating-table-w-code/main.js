@@ -1,38 +1,35 @@
 const FORM = document.getElementById('form-input')
 const ERR = document.getElementById('err')
 const AVG_OUTPUT = document.getElementById('output-avg')
-
-// const MY_MPG = []
-// const MY_TRIP_COST = []
+const TBL_OUTPUT = document.getElementById('table-out')
 
 const MY_DATA = []
 
-function updateDOM (input, id) {
+const updateDOM = (input, id) => {
     const divEl = document.querySelector(id)
     const p = document.createElement('p')
     p.textContent = input
     divEl.appendChild(p)
 }
 
-function trackMPGandCost (obj) {
-    const MPG  = Math.round(obj.miles/obj.gallons)
-    const tripCost = Math.round(obj.gallons * obj.price)
+const trackMPGandCost = (miles, gallons, price) => {
+    const MPG  = Math.round(miles/gallons)
+    const tripCost = Math.round(gallons * price)
     updateDOM(`Miles per gallon  is ${MPG} and trip cost is ${tripCost}`, '#output')
     obj.MPG = MPG
     obj.tripCost = tripCost
-    // MY_MPG.push(MPG)
-    // MY_TRIP_COST.push(tripCost)
-    return obj
+   
+    return {
+        MPG: MPG, 
+        tripCost: tripCost,
+        miles: miles,
+        gallons: gallons,
+        price: price
+    }
 }
 
-// const calculateSUM = (arr) => {
-//     let sum = 0
-//     for(value of arr) {
-//        sum += value
-//     }
-//     return sum
-// }
-
+const calculateAvg = () => {
+    const numberOfObj = MY_DATA.length
 function calculateAvg () {
     let sumMPG  = 0
     let sumTripCost = 0  
@@ -40,41 +37,56 @@ function calculateAvg () {
         sumMPG += obj.MPG
         sumTripCost += obj.tripCost
     })
-    //let sumMPG = calculateSUM(MY_MPG)
-    //let sumTripCost = calculateSUM(MY_TRIP_COST)
-    let avgMPG = Math.round(sumMPG/MY_DATA.length)
-    let avgTripCost = Math.round(sumTripCost/MY_DATA.length)
+    const avgMPG = Math.round(sumMPG/numberOfObj)
+    const avgTripCost = Math.round(sumTripCost/numberOfObj)
     updateDOM(`Average MPG is ${avgMPG}`, '#output-avg')
     updateDOM(`Average Trip Cost is ${avgTripCost}`, '#output-avg')
 }
 
+const isFormValid = (miles, gallons, price) => {
+    const errMsg = []
+    if (miles === 0 || gallons === 0 || price === 0) {
+        errMsg.push('Make sure your input value greater than 0!!, Try Again')
+    }
+    if (price > 1000) {
+        errMsg.push('Really!!!?? I think this is in error...Try again')
+    }
+    if (errMsg.length > 0) {
+        ERR.textContent = errMsg
+        return false
+    } else {
+        return true
+
+    }
+}
+
+function renderTable(){
+    const tbl = document.createElement('table')
+    const headings = ['Miles Driven:','Gallons Used:','Price Paid:','Trip MPG','Trip Cost','Edit/Delete']
+    const tr = document.createElement('tr')
+    headings.forEach (function(heading){
+        let th = document.createElement('th')
+        th.textContent = heading
+        tr.appendChild(th)
+    })
+    console.log (tr)
+    tbl.appendChild (tr)
+    TBL_OUTPUT.appendChild(tbl)
+}
+
 FORM.addEventListener('submit', (e) => {
     e.preventDefault()
-    const errMsg = []
     const miles = parseInt(e.target.miles.value)
     const gallons = parseInt(e.target.gallons.value)
     const price = parseInt(e.target.price.value)
-    if(miles === 0 || gallons === 0 || price === 0) {
-        errMsg.push('Make sure your input value greater than 0!!, Try Again')
-    }
-    if(price > 1000) {
-        errMsg.push('Really!!!?? I think this is in error...Try again')
-    }
-    if(errMsg.length > 0) {
-        ERR.textContent = errMsg
-    } else {
-        const newDataObj = {
-            miles: miles,
-            gallons: gallons,
-            price: price
-        }
+    const isValid = isFormValid(miles, gallons, price)
+    if(isValid) {
         ERR.textContent = ''
         AVG_OUTPUT.textContent = ''
-        const updatedDataObj = trackMPGandCost(newDataObj)
-        MY_DATA.push(updatedDataObj)
-        calculateAvg() 
-
+        const dataObj = trackMPGandCost(miles, gallons, price)
+        MY_DATA.push(dataObj)
+        renderTable ()
+        calculateAvg()
     }
-    FORM.reset()
-
+    FORM.reset()  
 })
