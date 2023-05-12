@@ -5,14 +5,14 @@ const TBL_OUTPUT = document.getElementById('table-out')
 
 const MY_DATA = []
 
-const updateDOM = (input, id) => {
+function updateDOM (input, id) {
     const divEl = document.querySelector(id)
     const p = document.createElement('p')
     p.textContent = input
     divEl.appendChild(p)
 }
 
-const trackMPGandCost = (miles, gallons, price) => {
+function trackMPGandCost (miles, gallons, price) {
     const MPG  = Math.round(miles/gallons)
     const tripCost = Math.round(gallons * price)
     updateDOM(`Miles per gallon  is ${MPG} and trip cost is ${tripCost}`, '#output')
@@ -28,9 +28,8 @@ const trackMPGandCost = (miles, gallons, price) => {
     }
 }
 
-const calculateAvg = () => {
-    const numberOfObj = MY_DATA.length
 function calculateAvg () {
+    const numberOfObj = MY_DATA.length
     let sumMPG  = 0
     let sumTripCost = 0  
     MY_DATA.forEach(obj => {
@@ -43,7 +42,7 @@ function calculateAvg () {
     updateDOM(`Average Trip Cost is ${avgTripCost}`, '#output-avg')
 }
 
-const isFormValid = (miles, gallons, price) => {
+function isFormValid  (miles, gallons, price) {
     const errMsg = []
     if (miles === 0 || gallons === 0 || price === 0) {
         errMsg.push('Make sure your input value greater than 0!!, Try Again')
@@ -74,19 +73,13 @@ function renderTable(){
     TBL_OUTPUT.appendChild(tbl)
 }
 
-FORM.addEventListener('submit', (e) => {
-    e.preventDefault()
-    const miles = parseInt(e.target.miles.value)
-    const gallons = parseInt(e.target.gallons.value)
-    const price = parseInt(e.target.price.value)
-    const isValid = isFormValid(miles, gallons, price)
-    if(isValid) {
-        ERR.textContent = ''
-        AVG_OUTPUT.textContent = ''
-        const dataObj = trackMPGandCost(miles, gallons, price)
-        MY_DATA.push(dataObj)
-        renderTable ()
-        calculateAvg()
+MY_DATA.forEach (function (obj) {
+    const tr = document.createElement('tr')
+    for (key in obj){
+      let td = document.createElement('td')
+        td.textContent = obj[key]
+        tr.appendChild (td)
     }
-    FORM.reset()  
-})
+    tbl.appendChild (tr)
+    })
+
