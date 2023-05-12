@@ -72,7 +72,9 @@ function renderEditDelBtn(index) {
     delBtn.textContent = 'delete';
     
     editBtn.addEventListener('click', function(e) {
-        console.log(index)
+      FORM[0] = miles
+      FORM[1] = gallons
+      FORM[2] = price
     })
     td.appendChild(editBtn);
     td.appendChild(delBtn);
