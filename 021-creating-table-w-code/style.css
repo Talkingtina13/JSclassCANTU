@@ -1,0 +1,22 @@
+.centered {
+
+    /* Center the form on the page */
+    margin: 0 auto;
+    width: 800px;
+    /* Form outline */
+    padding: 1em;
+    border-radius: 1em;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .error{
+    color: red;
+  }
+
+  table, th, td {
+    border: 1px solid blue;
+    padding: 8px;
+  }
