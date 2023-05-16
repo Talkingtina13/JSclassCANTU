@@ -29,5 +29,5 @@ if (isNameMatch) {
 if (isUnderage) {
   console.log(`${name} is too young.`);
 } else {
-  console.log(`${name} is not young.`);
+  console.log(`${name} is old enough.`);
 }
