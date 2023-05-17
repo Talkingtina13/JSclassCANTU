@@ -11,7 +11,6 @@ const MY_DATA = getTripData()
 renderTable(MY_DATA)
 
 
-
 FORM.addEventListener('submit', (e) => {
     e.preventDefault();
     const miles = parseFloat(e.target.miles.value);
