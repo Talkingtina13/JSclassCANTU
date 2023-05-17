@@ -36,6 +36,8 @@ function renderEditDelBtn(MY_DATA, index) {
         MY_DATA.splice(index, 1)
         saveTripData(MY_DATA)
         renderTable(MY_DATA)
+        const button = document.querySelector("Button"); 
+        button.setAttribute("disabled", "disabled");
     })
 
     td.appendChild(editBtn);
