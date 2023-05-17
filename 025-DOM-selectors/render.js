@@ -37,8 +37,13 @@ function renderEditDelBtn(MY_DATA, index) {
         saveTripData(MY_DATA)
         renderTable(MY_DATA)
         const button = document.querySelector("Button"); 
-        button.setAttribute("disabled", "disabled");
+        disable_btn.forEach(function(btn){
+            btn.setAttribute('disabled', true)
+        })
     })
+    
+    editBtn.classList.add('tbl-btn')
+    delBtn.classList.add('tbl-btn')
 
     td.appendChild(editBtn);
     td.appendChild(delBtn);
