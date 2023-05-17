@@ -1,6 +1,6 @@
 import {renderTable} from "./render.js";
 import { getTripData, saveTripData } from "./storage.js";
-import { isFormValid, calculateAvg, trackMPGandCost} from "./form.js"
+import { isFormValid, calculateAvg, trackMPGandCost } from "./form.js";
 const FORM = document.getElementById('form-input');
 const ERR = document.getElementById('err');
 const AVG_OUTPUT = document.getElementById('output-avg');
@@ -8,16 +8,6 @@ const AVG_OUTPUT = document.getElementById('output-avg');
 
 const MY_DATA = getTripData()
 renderTable(MY_DATA)
-
-
-
-function updateDOM(input, id) {
-    const divEl = document.querySelector(id);
-    const p = document.createElement('p');
-    p.textContent = input;
-    divEl.appendChild(p);
-}
-
 
 FORM.addEventListener('submit', (e) => {
     e.preventDefault();

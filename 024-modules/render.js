@@ -8,13 +8,12 @@ function renderTableHeadings() {
     const tbl = document.createElement('table');
     const headings = ['Miles Driven:', 'Gallons Used:', 'Price Paid:', 'Trip MPG', 'Trip Cost', 'Edit/Delete'];
     const tr = document.createElement('tr');
-    headings.forEach(function (heading) {
-        let th = document.createElement('th');
-        th.textContent = heading;
-        tr.appendChild(th);
-    });
-    tbl.appendChild(tr);
-    return tbl;
+    headings.forEach(function (heading) {   let th = document.createElement('th');
+    th.textContent = heading;
+    tr.appendChild(th);
+});
+tbl.appendChild(tr);
+return tbl;
 }
 
 
