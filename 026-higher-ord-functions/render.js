@@ -17,44 +17,38 @@ function renderTableHeadings() {
     return tbl;
 }
 
-
-
-function renderEditDelBtn(MY_DATA, index) {
-    const td = document.createElement('td');
-    const editBtn = document.createElement('button');
-    editBtn.textContent = 'edit';
-    const delBtn = document.createElement('button');
-    delBtn.textContent = 'delete';
-
-    editBtn.addEventListener('click', function(e){
-        FORM[0].value = MY_DATA[index].miles
-        FORM[1].value = MY_DATA[index].gallons
-        FORM[2].value = MY_DATA[index].price
-        MY_DATA.splice(index, 1)
-    })
-    delBtn.addEventListener('click', function(e){
-        MY_DATA.splice(index, 1)
-        saveTripData(MY_DATA)
-        renderTable(MY_DATA)
-        const button = document.querySelector("Button"); 
-        disable_btn.forEach(function(btn){
-            btn.setAttribute('disabled', true)
-        })
+  function renderEditDelBtn(MY_DATA, index) {
+    const td = document.createElement("td");
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "edit";
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "delete";
+    editBtn.addEventListener ('click', function (e){
+      FORM[0].value = MY_DATA [index].miles
+      FORM[1].value = MY_DATA [index].gallons
+      FORM[2].value = MY_DATA [index].price
+      MY_DATA.splice (index, 1)
+      const disable_btns = document.querySelectorAll ('.tbl-btn')
+      disable_btns.forEach (function (btn){
+        btn.setAttribute ('disabled', true)
+      })
     })
     
-    editBtn.classList.add('tbl-btn')
-    delBtn.classList.add('tbl-btn')
-
-    td.appendChild(editBtn);
-    td.appendChild(delBtn);
-    return td;
-}
-
-
-
-function renderTable(MY_DATA) {
-    TBL_OUTPUT.innerHTML = '';
-    if(MY_DATA.length !== 0){
+    delBtn.addEventListener ('click', function (e){
+      MY_DATA.splice (index, 1)
+      saveTripData (MY_DATA)
+      renderTable(MY_DATA)
+        })
+        editBtn.classList.add ('tbl-btn')
+        delBtn.classList.add ('tbl-btn')
+        td.appendChild(editBtn);
+        td.appendChild(delBtn);
+        return td;
+      }
+    
+      function renderTable(MY_DATA) {
+        TBL_OUTPUT.innerHTML = '';
+        if (MY_DATA.length !== 0) {
         const tbl = renderTableHeadings();
         TBL_OUTPUT.appendChild(tbl);
         MY_DATA.forEach(function (obj, index) {
